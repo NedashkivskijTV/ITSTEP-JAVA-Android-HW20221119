@@ -108,7 +108,6 @@ public class PizzasizeActivity extends AppCompatActivity implements View.OnClick
             case R.id.ivPlusMushroom:
             case R.id.ivMinusCheese:
             case R.id.ivPlusCheese: {
-                //Toast.makeText(this, "PLUS - MINUS", Toast.LENGTH_SHORT).show();
                 changeToppingsCount(btn_id);
                 break;
             }
@@ -122,40 +121,26 @@ public class PizzasizeActivity extends AppCompatActivity implements View.OnClick
     private void changeToppingsCount(int btn_id) {
         switch (btn_id) {
             case R.id.ivMinusMeat: {
-//                int countMeat = Integer.parseInt(tvCountMeat.getText().toString());
-//                //Toast.makeText(this, "ivMinusMeat = " + countMeat, Toast.LENGTH_SHORT).show();
-//                tvCountMeat.setText(countMeat > 0 ? "" + (countMeat - 1) : "" + countMeat);
                 changeAllToppingsCounter(tvCountMeat, false);
                 break;
             }
             case R.id.ivPlusMeat: {
-//                int countMeat = Integer.parseInt(tvCountMeat.getText().toString());
-//                //Toast.makeText(this, "ivPlusMeat = " + countMeat, Toast.LENGTH_SHORT).show();
-//                tvCountMeat.setText(countMeat < 3 ? "" + (countMeat + 1) : "" + countMeat);
                 changeAllToppingsCounter(tvCountMeat, true);
                 break;
             }
             case R.id.ivMinusMushroom: {
-//                int countMeat = Integer.parseInt(tvCountMushroom.getText().toString());
-//                tvCountMushroom.setText(countMeat > 0 ? "" + (countMeat - 1) : "" + countMeat);
                 changeAllToppingsCounter(tvCountMushroom, false);
                 break;
             }
             case R.id.ivPlusMushroom: {
-//                int countMeat = Integer.parseInt(tvCountMushroom.getText().toString());
-//                tvCountMushroom.setText(countMeat < 3 ? "" + (countMeat + 1) : "" + countMeat);
                 changeAllToppingsCounter(tvCountMushroom, true);
                 break;
             }
             case R.id.ivMinusCheese: {
-//                int countMeat = Integer.parseInt(tvCountCheese.getText().toString());
-//                tvCountCheese.setText(countMeat > 0 ? "" + (countMeat - 1) : "" + countMeat);
                 changeAllToppingsCounter(tvCountCheese, false);
                 break;
             }
             case R.id.ivPlusCheese: {
-//                int countMeat = Integer.parseInt(tvCountCheese.getText().toString());
-//                tvCountCheese.setText(countMeat < 3 ? "" + (countMeat + 1) : "" + countMeat);
                 changeAllToppingsCounter(tvCountCheese, true);
                 break;
             }
@@ -166,7 +151,6 @@ public class PizzasizeActivity extends AppCompatActivity implements View.OnClick
 
     private void changeOrderToppingsList() {
         order.getToppingCountList().clear();
-        //order.setToppingCountList(new ArrayList<>());
         if (!tvCountMeat.getText().equals("0")) {
             ToppingCount toppingCount = new ToppingCount(PizzaTopping.MEAT, Integer.parseInt(tvCountMeat.getText().toString()));
             order.addToppingCount(toppingCount);
@@ -177,28 +161,16 @@ public class PizzasizeActivity extends AppCompatActivity implements View.OnClick
         if (!tvCountCheese.getText().equals("0")) {
             order.addToppingCount(new ToppingCount(PizzaTopping.CHEESE, Integer.parseInt(tvCountCheese.getText().toString())));
         }
-
-//        if (order.getToppingCountList().size() > 0) {
-//            Toast.makeText(this, "" + order.getToppingCountList().get(0).getPizzaTopping() + "-" + order.getToppingCountList().get(0).getCount(), Toast.LENGTH_SHORT).show();
-//        }
-//        Toast.makeText(this, "" + order.getToppingCountList().size(), Toast.LENGTH_SHORT).show();
     }
 
     private void changeAllToppingsCounter(TextView tvCounter, boolean isPlus) {
         int counter = Integer.parseInt(tvCounter.getText().toString());
-//        tvCounter.setText(counter < 3 ? "" + (counter + 1) : "" + counter);
-//        tvCounter.setText(counter > 0 ? "" + (counter - 1) : "" + counter);
         tvCounter.setText(isPlus ? (counter < 3 ? "" + (counter + 1) : "" + counter) : (counter > 0 ? "" + (counter - 1) : "" + counter));
     }
 
     private void showOrderActivity() {
         Intent intent = new Intent(this, OrderActivity.class);
         intent.putExtra(ConstantsStore.KEY_ORDER, order);
-        //Toast.makeText(this, "" + order.getPizzaSize().name(), Toast.LENGTH_SHORT).show();
-//        for (ToppingCount toppingCount : order.getToppingCountList()) {
-//            Toast.makeText(this, "" + toppingCount.getPizzaTopping() + "-" + toppingCount.getCount(), Toast.LENGTH_SHORT).show();
-//        }
-        //Toast.makeText(this, "" + order.getToppingCountList().get(0).getPizzaTopping(), Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 }

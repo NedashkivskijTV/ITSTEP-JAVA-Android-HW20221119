@@ -109,8 +109,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (tvCountPizza.getText().equals(tvCountPizzaStart())) {
             showChoosePizzaRecipeMassage();
         } else {
-            //Toast.makeText(this, "" + order.getPizzaRecipe().name() + " - " + order.getPizzaCount(), Toast.LENGTH_SHORT).show();
-
             Intent intent = new Intent(this, PizzasizeActivity.class);
             intent.putExtra(ConstantsStore.KEY_ORDER, order);
             startActivity(intent);
@@ -171,7 +169,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void changeCountPizza(boolean isPlus) {
-        //if (!tvCountPizza.getText().toString().equals("-")) {
         if (!tvCountPizza.getText().toString().equals(tvCountPizzaStart())) {
             int countPizza = Integer.parseInt(tvCountPizza.getText().toString());
             countPizza = isPlus ? countPizza + 1 : countPizza > 1 ? countPizza - 1 : countPizza;
